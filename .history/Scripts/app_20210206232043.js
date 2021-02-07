@@ -3,6 +3,10 @@
 
 "use strict";
 
+const { start } = require("@popperjs/core");
+
+
+let core;
 
 
 ((core) =>
@@ -120,7 +124,7 @@
         sendButton.addEventListener("click", function(event){
             //event.preventDefault();
             
-            let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
+            let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
 
             if(contact.serialize())
             {
@@ -142,7 +146,7 @@
         {
           let contactData = localStorage.getItem((index + 1).toString());
 
-          let contact = new core.Contact();
+          let contact = new Contact();
           contact.deserialize(contactData);
 
           data += `<tr>
@@ -189,6 +193,6 @@
 
     window.addEventListener("load", Start);
 
-core.Start = Start;
+core.Start = start;
 
 })  (core || (core={}) );
